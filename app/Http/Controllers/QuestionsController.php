@@ -14,8 +14,10 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-      $questions = Question::latest()->paginate(5); 
-      return view ('questions.index', compact('questions'));
+      $questions = Question::with('user')->latest()->paginate(5); 
+       return view ('questions.index', compact('questions'));
+
+     
     }
 
     /**
@@ -45,9 +47,10 @@ class QuestionsController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show($id)
     {
-        //
+        $questions = Question::find($id);
+        return view('questions.show', compact('questions'));
     }
 
     /**

@@ -49,4 +49,16 @@ class User extends Authenticatable
         $this->attribute['slug']= str_slug($value);  
 
     }
+
+     
+    public function getUrlAttribute() 
+        
+    {
+        // return route('questions.show', $this->id);
+        return '#';
+
+
+    }
+
+    
 }
