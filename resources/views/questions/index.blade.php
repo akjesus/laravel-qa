@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container">
+
+
+
+    
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
@@ -16,6 +20,7 @@
                 </div>
 
                 <div class="card-body">
+                @include('layouts._messages')
                     @foreach($questions as $question)
                     <div class = "media">
                         <div class = "d-flex flex-column counters">
