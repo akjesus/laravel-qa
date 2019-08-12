@@ -10644,6 +10644,10 @@ a.text-dark:focus {
   }
 }
 
+form.form-delete {
+  display: inline;
+}
+
 .counters {
   margin-right: 30px;
   font-size: 10px;
