@@ -66,10 +66,17 @@ class QuestionsController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Question $question)
     {
-        $question = Question::find($id);
+      if (\Gate::denies('update-question', $question)) {
+
+        abort(403, 'Access Denied');
+        
+
+      }
+      else {
         return view('questions.edit', compact('question'));
+      }
     }
 
     /**
@@ -80,7 +87,7 @@ class QuestionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(AskQuestionRequest $request, Question $question)
-    {
+    { 
        $question->update($request->only('title', 'body'));
        return redirect()->route('questions.index')->with('success', "Your Question was updated ");
     }
@@ -92,8 +99,17 @@ class QuestionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Question $question)
-    {
+    {   
+      if (\Gate::denies('delete-question', $question)) {
+
+        abort(403, 'Access Denied');
+      }
+      else {
         $question->delete();
-       return redirect(route('questions.index'))->with('success','Question deleted.');
+        return redirect(route('questions.index'))->with('success','Question deleted.');
+
+      }
+        
+        
     }
 }
