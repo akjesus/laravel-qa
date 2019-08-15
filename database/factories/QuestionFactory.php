@@ -13,7 +13,7 @@ $factory->define(Question::class, function (Faker $faker) {
        'slug'=>str_slug($title),
        'body'=> $faker->paragraphs(rand(4, 8), true),
        'views'=> rand(0, 8),
-       'answers'=> rand(0, 8),
+       'answers_count'=> rand(0, 8),
        'votes'=> rand(-3, 8)
 
     ];
