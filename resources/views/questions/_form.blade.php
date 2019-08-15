@@ -18,5 +18,6 @@
                         </span>
                     @enderror
                     <div class = "form-group">
-                    <button type = "submit" class = "btn btn-outline-primary btn-lg">{{ $buttonText }}</button>
+                    <button type = "submit" class = "btn btn-outline-primary ">{{ $buttonText }}</button>
+                    <a href="{!! route('questions.index') !!}" class="btn btn-outline-info">Cancel</a>
                      </div>
